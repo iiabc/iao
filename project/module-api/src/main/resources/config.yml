@@ -1,0 +1,32 @@
+server:
+  port: 6100
+
+mysql:
+  host: localhost
+  port: 3306
+  username: root
+  password: 123456
+  database: iao
+
+redis:
+  enable: false
+  host: localhost
+  port: 6379
+#  password: password
+  ssl: false
+  # 时间使用的是 Duration
+  timeout: PT15S
+  database: 0
+  # 也可以使用  uri 来设置你的数据
+  #uri: "redis://mypassword@localhost:6379/0?timeout=10s"
+  pool:
+    # 连接池分三种 NONE 不使用连接池 SYNC 同步连接池 ASYNC 异步连接池
+    # Lettuce的优越性 其实更推荐不用连接池
+    type: NONE
+    maxTotal: 8
+    maxIdle: 8
+    minIdle: 0
+    maxWait: PT15S
+  # mode: single (单机) / cluster (集群) / master_slave (主从)
+  # 连接写法: redis://[password@]host[:port][/databaseNumber][?[timeout=timeout[d|h|m|s|ms|us|ns]]
+  mode: single
